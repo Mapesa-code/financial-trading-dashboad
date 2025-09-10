@@ -1,0 +1,10 @@
+flask>=3.0.0
+yfinance>=0.2.50
+lightgbm>=4.3.0
+scikit-learn>=1.5.0
+pandas>=2.2.0
+numpy>=1.26.0
+alpaca-py>=0.16.0
+gunicorn>=21.2.0
+# Optional for Keras baseline in /predict:
+# tensorflow-cpu==2.17.*

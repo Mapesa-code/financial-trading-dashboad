@@ -9,6 +9,17 @@ from flask import Flask, request, jsonify
 import lightgbm as lgb
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
+from flask import request, jsonify
+from drive_utils import upload_dataframe_to_drive
+
+@app.route("/save_drive", methods=["POST"])
+def save_drive():
+    ticker = request.args.get("ticker", "AAPL")
+    period = request.args.get("period", "1y")
+    df = get_stock_data(ticker, period)
+    filename = f"{ticker}_{period}_data.csv"
+    url = upload_dataframe_to_drive(df, filename)
+    return jsonify({"drive_url": url})
 
 # Optional TensorFlow/Keras
 try:
